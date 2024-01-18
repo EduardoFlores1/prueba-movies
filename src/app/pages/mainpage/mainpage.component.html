@@ -1,0 +1,29 @@
+<div class="container my-4">
+  <h1>Fake Store API</h1>
+  <hr>
+  <input type="text" class="form-control" placeholder="ricky..." (keyup)="filter($event)">
+
+  <div class="row row-cols-1 row-cols-md-3 row-cols-xl-4 g-5 mt-0">
+    @for (product of products; track product.id) {
+    
+      <div class="col mt-5">
+        <div class="card h-100">
+          <img [src]="product.image" class="card-img-top" style="height: 256px;">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.title }}</h5>
+
+            <div class="info">
+              <span class="btn btn-sm float-end" [ngClass]="{
+                'btn-success': product.rating.rate > 3.5,
+                'btn-warning': !(product.rating.rate > 3.5)
+              }">{{ product.rating.rate}}</span>
+              <p class="text-muted">{{ product.category }}</p>
+              <hr>
+              <p class="card-text"> Price: ${{ product.price }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
